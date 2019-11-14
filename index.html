@@ -13,10 +13,6 @@
   display: inline-block;
   font-size: 16px;
 }
-
-    .btn-large {
-    @extend .blue, .lighten-4;
-  }
     
     </style>
     <head>
@@ -27,33 +23,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </head>
     <body>
+        <nav>
+            <div class="nav-wrapper grey darken-4">
+                <a href="#" class="brand-logo">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="sass.html">Sass</a></li>
+                    <li><a href="badges.html">Components</a></li>
+                    <li><a href="collapsible.html">JavaScript</a></li>
+                    <img src="Poggers.png" alt="POGGERS" class = "avatar">
+                </ul>
+            </div>
+        </nav>
         <div class = "container">
             <h1 id="uid"></h1>
             <p>This app shows basics of Firebase with Javascript. Inspect page and view console to see info.</p>
             <ol style>
-                <li>new firebase project called basic</li>
-                <li>enable google authenication</li>
-                <li>create realtime database in test mode</li>
-                <li>get config from project settings/web</li>
-                <li>copy this caode - right click view source - paste to editor</li>
-                <li>save index.html to  folder</li>
-                <li>terminal, cd to folder and invoke local server</li>
-                <li>python -m SimpleHTTPServer</li>
-                <li>try reading/writing to/from different nodes in firebase</li>
+                <li>heheheh</li>
                 <li><a href="https://youtu.be/OgL070gjZkI" target="_blank">Explanatory video</a></li>
                 <li><a href="process.html" target="_blank">Example code to process JS Objects returned by Firebase</a></li>
             </ol>
+            <img src="Poggers.png" alt="POGGERS">
             <div class="input-field col s6">
                 <input placeholder="Input Text" id="text_input" type="text" class="validate">
                 <label for="text_input">Text</label>
             </div>
             <div>
-                <button onclick="signin()" class="waves-effect waves-light btn-large">Sign in</button>
-                <button onclick="getData()" class="waves-effect waves-light btn-large">Get data</button>
-                <button onclick="setData()" class="waves-effect waves-light btn-large">Set data</button>
-                <button onclick="updateData()" class="waves-effect waves-light btn-large">Update data</button>
-                <button onclick="pushData()" class="waves-effect waves-light btn-large">Push data</button>
-                <button onclick="removeData()" class="waves-effect waves-light btn-large">Remove data</button>
+                <button onclick="signin()" class="waves-effect waves-light btn-large grey darken-3">Sign in</button>
+                <button onclick="getData()" class="waves-effect waves-light btn-large grey darken-3">Get data</button>
+                <button onclick="setData()" class="waves-effect waves-light btn-large grey darken-3">Set data</button>
+                <button onclick="updateData()" class="waves-effect waves-light btn-large grey darken-3">Update data</button>
+                <button onclick="pushData()" class="waves-effect waves-light btn-large grey darken-3">Push data</button>
+                <button onclick="removeData()" class="waves-effect waves-light btn-large grey darken-3">Remove data</button>
             </div>
             <div id="info"></div>
         </div>
