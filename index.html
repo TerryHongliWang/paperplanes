@@ -3,17 +3,6 @@
 <!-- HERE IS YOUR HTML TO SET UP YOUR PAGE -->
 <html style = "background-color: #FFFEFC">
     <style>
-    button {
-  background-color: #111111;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-    
     </style>
     <head>
         <!-- HERE ARE YOUR FIREBASE and GOOGLE AUTHENICATION IMPORTS -->
@@ -44,8 +33,8 @@
             </ol>
             <img src="Poggers.png" alt="POGGERS">
             <div class="input-field col s6">
-                <input placeholder="Input Text" id="text_input" type="text" class="validate">
-                <label for="text_input">Text</label>
+                <input placeholder="Input Text" id="text_input" type="text" class="validate grey-text text-darken-3">
+                <label for="text_input" class="pink-text text-lighten-3">Text</label>
             </div>
             <div>
                 <button onclick="signin()" class="waves-effect waves-light btn-large grey darken-3">Sign in</button>
@@ -88,12 +77,20 @@
         
        // HERE IS THE FUNCTION TO SHOW HOW TO GET USER DATA
        function getData() {
-           var userId = document.getElementById("uid").innerHTML;
-           firebase.database().ref('/tweets/' + userId).once('value', function(snapshot) {
-               console.log(snapshot.val());
-           });
 
-       }
+           var userId = document.getElementById("uid").innerHTML;
+                firebase.database().ref('/tweets/' + userId).once('value', function(snapshot) {
+                var data = snapshot.val();
+                var i;
+                var displayMsg = document.getElementById("outputMsg")
+                displayMsg.innerHTML = ""
+                for (i=snapshot.numChildren()-1; i >= 0; i--){
+                    var lastindex =  Object.keys(snapshot.val())[i];
+                    displayMsg.innerHTML += "<div class='card'><p>" + snapshot.val()[lastindex].message +"</p> <p>Time Posted: " + snapshot.val()[lastindex].time +"</p></div>"
+                }
+            });
+        }
+
        
        // HERE IS THE FUNCTION TO SHOW HOW TO SET/OVERWRITE USER DATA
        function setData() {
@@ -127,5 +124,6 @@
                 window.location.replace("fbtest.html");
             });
         }
+        
     </script>
 </html>
