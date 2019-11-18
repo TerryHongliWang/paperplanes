@@ -87,7 +87,7 @@
                 displayMsg.innerHTML = ""
                 for (i=snapshot.numChildren()-1; i >= 0; i--){
                     var lastindex =  Object.keys(snapshot.val()[lastindex])[i];
-                    displayMsg.innerHTML += "<div class='card'><p>" + snapshot.val()[lastindex]+"</p> <p>Time Posted: " + snapshot.val()[lastindex].time +"</p></div>"
+                    displayMsg.innerHTML += "<div class='card'><p>" + snapshot.val()[lastindex].tweet+"</p> <p>Time Posted: " + snapshot.val()[lastindex].time +"</p></div>"
                 }
             });
         }
