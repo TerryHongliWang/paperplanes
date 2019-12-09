@@ -1,7 +1,7 @@
 
 <html style = "background-color: #FFFEFC">
     <style>
-        @import "@material/textfield/mdc-text-field";
+        @import "@material/textfield/mdc-text-field";   
     </style>
     <head>
         <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
@@ -15,38 +15,65 @@
     <body>
         <nav>
             <div class="nav-wrapper grey darken-4">
-                <a href="#" class="brand-logo">Logo</a>
+                <a href="#!" class="brand-logo"><i class="material-icons" style = "margin-left: 7px; font-size: 37px">send</i>Paper Planes</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
-                    <img src="Poggers.png" alt="POGGERS" class = "avatar">
+                    <li><a href="5.html">5 Seconds</a></li>
+                    <li><a href="10.html">10 Seconds</a></li>
+                    <li><a href="20.html">20 Seconds</a></li>
+                    <li><button onclick="signin()" class="waves-effect waves-light btn-large grey darken-3" style = "margin-bottom: 4px">Sign in</button></li>
+                    <img src="hhh.png" alt="POGGERS" class = "circle" style = "margin: 3px 3px 0px 21px; border:#FFFEFC 7px">
                 </ul>
             </div>
         </nav>
         <div class = "container">
             <h1 id="uid"></h1>
-            <p>This app shows basics of Firebase with Javascript. Inspect page and view console to see info.</p>
+            <canvas id = "maincanvas" width = "70%" height = "370">
+            </canvas>
             <ol class = "container">
                 <!--<li>heheheh</li>
                 <li><a href="https://youtu.be/OgL070gjZkI" target="_blank">Explanatory video</a></li>
                 <li><a href="process.html" target="_blank">Example code to process JS Objects returned by Firebase</a></li>-->
             </ol>
-            <img src="Poggers.png" alt="POGGERS">
             <div class="input-field col s6">
                 <input placeholder="Input Text" id="text_input" type="text" class="validate grey-text text-darken-3">
                 <label for="text_input" class="pink-text text-lighten-3">Text</label>
             </div>
-            <div class="mdc-text-field">
-                <input type="text" id="my-text-field" class="mdc-text-field__input">
-                <label class="mdc-floating-label" for="my-text-field">Hint text</label>
-                <div class="mdc-line-ripple"></div>
+            <!--<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon">
+                <i class="material-icons mdc-text-field__icon">favorite</i>
+                <input class="mdc-text-field__input" id="text-field-hero-input">
+                <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                            <label for="text-field-hero-input" class="mdc-floating-label">Name</label>
+                        </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                </div>
             </div>
-            <div>
+            <div class="mdc-text-field mdc-text-field--textarea">
+                <textarea id="textarea" class="mdc-text-field__input" rows="8" cols="40"></textarea>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="textarea" class="mdc-floating-label">Textarea Label</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+            </div>-->
+            <!--<div>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red">
+                        <i class="large material-icons">mode_edit</i>
+                    </a>
+                    <ul>
+                        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+                        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+                        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+                        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+                    </ul>
+                </div>-->
                 <button onclick="pushData()" id="pushbutton" style="margin-right: 11px" class="btn-floating btn-large waves-effect waves-circle waves-light grey darken-3"><i class="material-icons">send</i></a>
-                <button onclick="signin()" class="waves-effect waves-light btn-large grey darken-3">Sign in</button>
-                <button onclick="getData()" class="waves-effect waves-light btn-large grey darken-3">Get data</button>
-                <button onclick="removeData()" class="waves-effect waves-light btn-large grey darken-3">Remove data</button>
+                <button onclick="getData()" class="waves-effect waves-light btn-large grey darken-3">Get Message</button>
+                <button onclick="removeData()" class="waves-effect waves-light btn-large grey darken-3">Remove Message</button>
             </div>
             <div id="outputMsg" style="margin-top:10px;"></div>        
             <div id="info"></div>
@@ -55,9 +82,24 @@
     
     <!-- HERE IS THE JAVASCRIPT TO CONNECT TO YOUR FIREBASE -->
     <script>
+        /*import React from 'react';
         import {MDCTextField} from '@material/textfield';
         const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
 
+        <TextField outlined label='Name' leadingIcon={<i className='material-icons'>favorite</i>}>
+            <Input value={this.state.value} onChange={(e) => this.setState({value: e.currentTarget.value})} />
+        </TextField>*/
+
+        import {MDCTextField} from '@material/textfield';
+
+        const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.fixed-action-btn');
+            var instances = M.FloatingActionButton.init(elems, {
+                direction: 'left'
+            });
+        });
 
 
 
@@ -147,5 +189,6 @@
                 window.location.replace("fbtest.html");
             });
         }
+
     </script>
 </html>
